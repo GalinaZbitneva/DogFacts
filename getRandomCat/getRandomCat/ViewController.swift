@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     struct Response: Codable {
-        var file: String // важно!! переменную назвать как ключ в json файле  пример  "file": "https://purr.objects-us-east-1.dream.io/i/AwLr7.jpg"
+        var file: String // важно!! переменную назвать как ключ в json файле  //пример  "file": //"https://purr.objects-us-east-1.dream.io/i/AwLr7.jpg"
     }
     
     struct DogFact: Codable {

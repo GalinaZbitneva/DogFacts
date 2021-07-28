@@ -13,9 +13,8 @@
 		BD7831C62699798100C51630 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7831C42699798100C51630 /* Main.storyboard */; };
 		BD7831C82699798300C51630 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD7831C72699798300C51630 /* Assets.xcassets */; };
 		BD7831CB2699798300C51630 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7831C92699798300C51630 /* LaunchScreen.storyboard */; };
-		BDFF521626A6AFC7007F6191 /* 1608784_paw_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFF521426A6AFC7007F6191 /* 1608784_paw_icon.png */; };
-		BDFF521726A6AFC7007F6191 /* 1564530_arrow_next_share_direction_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFF521526A6AFC7007F6191 /* 1564530_arrow_next_share_direction_icon.png */; };
-		BDFF521926A6B2DC007F6191 /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFF521826A6B2DC007F6191 /* cat.png */; };
+		BDFF521D26B02139007F6191 /* 1608784_paw_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFF521C26B02139007F6191 /* 1608784_paw_icon.png */; };
+		BDFF521F26B0214C007F6191 /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFF521E26B0214C007F6191 /* cat.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +26,8 @@
 		BD7831C72699798300C51630 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD7831CA2699798300C51630 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD7831CC2699798300C51630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BDFF521426A6AFC7007F6191 /* 1608784_paw_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1608784_paw_icon.png; path = ../../../../Downloads/1608784_paw_icon.png; sourceTree = "<group>"; };
-		BDFF521526A6AFC7007F6191 /* 1564530_arrow_next_share_direction_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1564530_arrow_next_share_direction_icon.png; path = ../../../../Downloads/1564530_arrow_next_share_direction_icon.png; sourceTree = "<group>"; };
-		BDFF521826A6B2DC007F6191 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cat.png; path = ../../../../Downloads/cat.png; sourceTree = "<group>"; };
+		BDFF521C26B02139007F6191 /* 1608784_paw_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1608784_paw_icon.png; sourceTree = "<group>"; };
+		BDFF521E26B0214C007F6191 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,11 +64,10 @@
 				BD7831C02699798100C51630 /* SceneDelegate.swift */,
 				BD7831C22699798100C51630 /* ViewController.swift */,
 				BD7831C42699798100C51630 /* Main.storyboard */,
+				BDFF521E26B0214C007F6191 /* cat.png */,
+				BDFF521C26B02139007F6191 /* 1608784_paw_icon.png */,
 				BD7831C72699798300C51630 /* Assets.xcassets */,
 				BD7831C92699798300C51630 /* LaunchScreen.storyboard */,
-				BDFF521526A6AFC7007F6191 /* 1564530_arrow_next_share_direction_icon.png */,
-				BDFF521826A6B2DC007F6191 /* cat.png */,
-				BDFF521426A6AFC7007F6191 /* 1608784_paw_icon.png */,
 				BD7831CC2699798300C51630 /* Info.plist */,
 			);
 			path = getRandomCat;
@@ -133,12 +130,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDFF521926A6B2DC007F6191 /* cat.png in Resources */,
-				BDFF521626A6AFC7007F6191 /* 1608784_paw_icon.png in Resources */,
+				BDFF521F26B0214C007F6191 /* cat.png in Resources */,
+				BDFF521D26B02139007F6191 /* 1608784_paw_icon.png in Resources */,
 				BD7831CB2699798300C51630 /* LaunchScreen.storyboard in Resources */,
 				BD7831C82699798300C51630 /* Assets.xcassets in Resources */,
 				BD7831C62699798100C51630 /* Main.storyboard in Resources */,
-				BDFF521726A6AFC7007F6191 /* 1564530_arrow_next_share_direction_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +295,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52Q5534KZM;
 				INFOPLIST_FILE = getRandomCat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -317,6 +314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52Q5534KZM;
 				INFOPLIST_FILE = getRandomCat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
