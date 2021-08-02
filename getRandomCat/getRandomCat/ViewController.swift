@@ -7,6 +7,16 @@
 
 import UIKit
 
+struct CatFact: Codable {
+    var text: String
+}
+
+// var factAboutDogs: String?
+
+
+var catFactsFromApi: [CatFact?] = [CatFact(text: "Кошки обнюхивают пищу перед едой, потому что так они определяют ее температуру"), CatFact(text: "По некоторым данным, Наполеон Бонапарт панически боялся кошек"), CatFact(text: "Треть владельцев кошек считает своих пушистых питомцев способными читать их мысли")]
+
+
 class ViewController: UIViewController {
     
     struct Response: Codable {
@@ -17,16 +27,18 @@ class ViewController: UIViewController {
         var fact: String
     }
     
-    var factAboutDogs: String?
     
-    
-        //let resourceURl = URL(string: "https://aws.random.cat/meow")
+    //let resourceURl = URL(string: "https://aws.random.cat/meow")
     let catResource = "https://aws.random.cat/meow"
     
     let dogsFactsUrl = "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all"
     
+    let catsFactsUrl = "https://cat-fact.herokuapp.com/facts"
+    
    
     //let testCatURL = URL(string: "https://purr.objects-us-east-1.dream.io/i/AwLr7.jpg")
+    
+    var currentIndexInArray = 1 // не 0, потому что с 0 индексом используем при загрузке сцены
     
     
     @IBOutlet weak var factLabel: UILabel!
@@ -50,11 +62,11 @@ class ViewController: UIViewController {
                 return
             }
            // print(json.file)// здесь как раз и будет искомая ссылка на рандомную картинку
-            let catURL = URL(string: json.file)!
+            let catURL = URL(string: json.file) ??  URL(string: "https://purr.objects-us-east-1.dream.io/i/XnWrl.jpg")
            // print(catURL)
             
             
-            self.downloadImage(from: catURL) // это функция которая юрл преобразует в картинку
+            self.downloadImage(from: catURL!) // это функция которая юрл преобразует в картинку
             
         })
         task.resume()
@@ -69,6 +81,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         getCatHttp(from: catResource)
+        //getCatFact(from: catsFactsUrl)
+        
+        factLabel.text = allfacts[0]?.text // в качестве начального массива будем использовать шаблонный массив
         
         // Do any additional setup after loading the view.
     }
@@ -82,11 +97,27 @@ class ViewController: UIViewController {
     
     
     @IBAction func getFactButton(_ sender: Any) {
-        getDogFact(from: dogsFactsUrl)
-        //factLabel.text = factAboutDogs
+       // getDogFact(from: dogsFactsUrl)
         
-        //добавить
+        //allfacts поменять на catFactsFromApi
+        if (currentIndexInArray<allfacts.count){
+            factLabel.text = allfacts[currentIndexInArray]?.text
+        }
+        currentIndexInArray += 1
+        
+        if (currentIndexInArray == allfacts.count){
+           // allfacts.append(contentsOf: catFactsFromApi)
+            
+            getCatFact(from: catsFactsUrl)
+            
+            //здесь нужно будет вставить функцию getCatFact чтобы массив пополнялся данными из  json
+        }
+ 
+        
+        
     }
+    
+    
     
     func getData (from url: URL, completion: @escaping (Data?, URLResponse?, Error?)->()){
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
@@ -132,7 +163,7 @@ func getDogFact(from url: String){
         let number = Int.random(in: 0...430)
         print(json[number].fact)// здесь как раз и будет искомая ссылка на рандомную картинку
         //print(json.count)// 435
-        self.factAboutDogs = json[number].fact
+       
        //factLabel.text = json[number].fact
         DispatchQueue.main.async {
             [weak self] in
@@ -141,6 +172,44 @@ func getDogFact(from url: String){
     })
     task.resume()
 }
+
+    
+    
+    func getCatFact(from url: String){
+
+        let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { [self]data, response, error in
+            guard let data = data , error == nil else {
+                print("something went wrong")
+                return
+            }
+             //значит получили данные
+            var result: [CatFact]?
+            
+            do{
+                result = try JSONDecoder().decode([CatFact].self, from: data)
+                
+            }
+            catch{
+                print("faild to convert")
+            }
+            guard let json = result else {
+                return
+            }
+            
+            allfacts.append(contentsOf: json)
+            
+            /*
+            let number = Int.random(in: 0...4)
+            //print(json.count)
+            DispatchQueue.main.async {
+                [weak self] in
+                self?.factLabel.text = catFactsFromApi[number]?.text}
+             */
+ 
+        })
+        task.resume()
+       
+    }
 
 }
 
