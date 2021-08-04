@@ -35,11 +35,14 @@ class ViewController: UIViewController {
     
     let catsFactsUrl = "https://cat-fact.herokuapp.com/facts"
     
+    let catPicture = URL(string: "https://purr.objects-us-east-1.dream.io/i/1302922972589_f.jpg")
+    
    
     //let testCatURL = URL(string: "https://purr.objects-us-east-1.dream.io/i/AwLr7.jpg")
     
     var currentIndexInArray = 1 // не 0, потому что с 0 индексом используем при загрузке сцены
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     @IBOutlet weak var factLabel: UILabel!
     
@@ -80,8 +83,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getCatHttp(from: catResource)
-        //getCatFact(from: catsFactsUrl)
+        //downloadImageUniversal(from: catPicture!, to: backgroundImage)
+        
+       // getCatHttp(from: catResource)
         
         factLabel.text = allfacts[0]?.text // в качестве начального массива будем использовать шаблонный массив
         
@@ -99,7 +103,11 @@ class ViewController: UIViewController {
     @IBAction func getFactButton(_ sender: Any) {
        // getDogFact(from: dogsFactsUrl)
         
-        //allfacts поменять на catFactsFromApi
+        
+        /*
+        
+         //здесь список подгружается без удаления
+         
         if (currentIndexInArray<allfacts.count){
             factLabel.text = allfacts[currentIndexInArray]?.text
         }
@@ -110,10 +118,19 @@ class ViewController: UIViewController {
             
             getCatFact(from: catsFactsUrl)
             
-            //здесь нужно будет вставить функцию getCatFact чтобы массив пополнялся данными из  json
+            
         }
- 
+ */
+        //здесь показанные факты удаляются из массива, новые подгружаются когда останется только два факта
+        allfacts.remove(at: 0)
         
+        if (allfacts.count>1){
+            factLabel.text = allfacts[0]?.text
+            //allfacts.remove(at: 0)
+        } else {
+            factLabel.text = allfacts[0]?.text
+            getCatFact(from: catsFactsUrl)
+        }
         
     }
     
@@ -134,6 +151,21 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 [weak self] in
                 self?.catImage.image = UIImage(data: data)
+            }
+        }
+    }
+    
+    private func downloadImageUniversal(from url: URL, to Image: UIImageView) {
+        print("download started")
+        getData(from: url){data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            print("download finished")
+            
+            DispatchQueue.main.async {
+                [weak self] in
+                Image.image = UIImage(data: data)
             }
         }
     }

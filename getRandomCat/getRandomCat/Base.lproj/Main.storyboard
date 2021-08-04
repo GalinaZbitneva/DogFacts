@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cats.png" translatesAutoresizingMaskIntoConstraints="NO" id="k5M-nD-uSI">
+                                <rect key="frame" x="0.0" y="48" width="414" height="848"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="L4j-54-1yH">
                                 <rect key="frame" x="57" y="225" width="300" height="300"/>
                             </imageView>
@@ -43,13 +47,6 @@
                                     <action selector="findCatButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qQ6-jL-ihN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28s-SG-kIy">
-                                <rect key="frame" x="5" y="577" width="404" height="21.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1608784_paw_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="euO-U3-3tV">
                                 <rect key="frame" x="37" y="797" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -58,17 +55,23 @@
                                 <rect key="frame" x="227" y="797" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="254" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28s-SG-kIy">
+                                <rect key="frame" x="0.0" y="640" width="414" height="92"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="L4j-54-1yH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="57" id="FL4-Ck-LrL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L4j-54-1yH" secondAttribute="trailing" constant="57" id="G10-vn-OhH"/>
-                            <constraint firstItem="28s-SG-kIy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="bQ9-Cb-37Q"/>
+                            <constraint firstItem="28s-SG-kIy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bQ9-Cb-37Q"/>
                             <constraint firstItem="L4j-54-1yH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="137" id="dei-OC-Noa"/>
-                            <constraint firstItem="28s-SG-kIy" firstAttribute="top" secondItem="L4j-54-1yH" secondAttribute="bottom" constant="52" id="kyy-3t-3uU"/>
-                            <constraint firstItem="28s-SG-kIy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-5" id="uXr-mv-iNN"/>
-                            <constraint firstItem="28s-SG-kIy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="489" id="zre-r1-B71"/>
+                            <constraint firstItem="28s-SG-kIy" firstAttribute="top" secondItem="L4j-54-1yH" secondAttribute="bottom" constant="115" id="kyy-3t-3uU"/>
+                            <constraint firstItem="28s-SG-kIy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uXr-mv-iNN"/>
+                            <constraint firstItem="28s-SG-kIy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="552" id="zre-r1-B71"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cat's facts" largeTitleDisplayMode="always" id="CDo-Pf-iJ1">
@@ -79,6 +82,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundImage" destination="k5M-nD-uSI" id="sIZ-Tp-tnx"/>
                         <outlet property="catImage" destination="L4j-54-1yH" id="0Hu-I5-v5a"/>
                         <outlet property="factLabel" destination="28s-SG-kIy" id="1QH-7X-RQ7"/>
                     </connections>
@@ -166,9 +170,7 @@
     <resources>
         <image name="1608784_paw_icon.png" width="4096" height="4096"/>
         <image name="cat.png" width="384" height="384"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="cats.png" width="422" height="594"/>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
